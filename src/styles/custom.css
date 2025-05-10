@@ -1,0 +1,49 @@
+/* Edka Brand Colors */
+:root {
+  /* Primary colors - based on Edka website */
+  --sl-color-accent-low: #e6f0ff;
+  --sl-color-accent: #3182ce;
+  --sl-color-accent-high: #1a4a8c;
+  
+  /* Text colors */
+  --sl-color-text-accent: #3182ce;
+  
+  /* Custom font stack that's similar to Edka's website */
+  --sl-font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  
+  /* Adjusting link colors */
+  --sl-color-text-link: #3182ce;
+  --sl-color-text-link-active: #1a4a8c;
+}
+
+/* Dark mode overrides */
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #203354;
+  --sl-color-accent: #4299e1;
+  --sl-color-accent-high: #a6c8ff;
+  
+  --sl-color-text-accent: #4299e1;
+  --sl-color-text-link: #4299e1;
+  --sl-color-text-link-active: #a6c8ff;
+}
+
+/* Additional custom styles */
+.hero {
+  padding-block: 3rem;
+}
+
+.hero img {
+  border-radius: 0.5rem;
+}
+
+/* Card styling to match Edka's design language */
+.card {
+  border-radius: 0.5rem;
+  border: 1px solid var(--sl-color-gray-5);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+} 
