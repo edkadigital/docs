@@ -3,8 +3,6 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeRapide from 'starlight-theme-rapide'
 
-import tailwindcss from '@tailwindcss/vite';
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -23,6 +21,14 @@ export default defineConfig({
               light: './src/assets/edka-light.svg',
               dark: './src/assets/edka-dark.svg',
             },
+          components: {
+              Footer: './src/components/CustomFooter.astro',
+          },
+          editLink: {
+              baseUrl: 'https://github.com/edkadigital/docs/edit/main/',
+          },
+          lastUpdated: true,
+          credits: false,
           sidebar: [
               {
                   label: 'Introduction',
