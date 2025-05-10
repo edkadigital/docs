@@ -1,31 +1,31 @@
 <svg width="500" height="300" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Cloud -->
-  <path d="M370 80C370 69 361 60 350 60C339 60 330 69 330 80C330 80.7 330.1 81.4 330.2 82.1C326.2 78.1 320.7 75.7 314.6 75.7C303.8 75.7 295 84.5 295 95.3C295 95.4 295 95.6 295 95.7C291.9 93.4 288.1 92 284 92C274.1 92 266 100.1 266 110C266 119.9 274.1 128 284 128H370C386.6 128 400 114.6 400 98C400 81.4 386.6 68 370 68C370 68 370 79 370 80Z" fill="#E6F0FF" stroke="#3182CE" stroke-width="2"/>
+  <path d="M370 80C370 69 361 60 350 60C339 60 330 69 330 80C330 80.7 330.1 81.4 330.2 82.1C326.2 78.1 320.7 75.7 314.6 75.7C303.8 75.7 295 84.5 295 95.3C295 95.4 295 95.6 295 95.7C291.9 93.4 288.1 92 284 92C274.1 92 266 100.1 266 110C266 119.9 274.1 128 284 128H370C386.6 128 400 114.6 400 98C400 81.4 386.6 68 370 68C370 68 370 79 370 80Z" fill="#E6F0FF" stroke="#0ea57f" stroke-width="2"/>
   
   <!-- Kubernetes Cluster -->
-  <rect x="100" y="160" width="300" height="100" rx="10" fill="#F0F9FF" stroke="#3182CE" stroke-width="2"/>
-  <text x="130" y="190" font-family="Inter, sans-serif" font-size="16" fill="#1A4A8C">Kubernetes Cluster</text>
+  <rect x="100" y="160" width="300" height="100" rx="10" fill="#F0F9FF" stroke="#0ea57f" stroke-width="2"/>
+  <text x="130" y="190" font-family="Inter, sans-serif" font-size="16" fill="#09795d">Kubernetes Cluster</text>
   
   <!-- Database -->
-  <rect x="130" y="210" width="60" height="30" rx="4" fill="#E6F0FF" stroke="#3182CE" stroke-width="2"/>
-  <text x="138" y="230" font-family="Inter, sans-serif" font-size="12" fill="#1A4A8C">Database</text>
+  <rect x="130" y="210" width="60" height="30" rx="4" fill="#E6F0FF" stroke="#0ea57f" stroke-width="2"/>
+  <text x="138" y="230" font-family="Inter, sans-serif" font-size="12" fill="#09795d">Database</text>
   
   <!-- Web App -->
-  <rect x="220" y="210" width="60" height="30" rx="4" fill="#E6F0FF" stroke="#3182CE" stroke-width="2"/>
-  <text x="228" y="230" font-family="Inter, sans-serif" font-size="12" fill="#1A4A8C">Web App</text>
+  <rect x="220" y="210" width="60" height="30" rx="4" fill="#E6F0FF" stroke="#0ea57f" stroke-width="2"/>
+  <text x="228" y="230" font-family="Inter, sans-serif" font-size="12" fill="#09795d">Web App</text>
   
   <!-- Monitoring -->
-  <rect x="310" y="210" width="60" height="30" rx="4" fill="#E6F0FF" stroke="#3182CE" stroke-width="2"/>
-  <text x="312" y="230" font-family="Inter, sans-serif" font-size="12" fill="#1A4A8C">Monitoring</text>
+  <rect x="310" y="210" width="60" height="30" rx="4" fill="#E6F0FF" stroke="#0ea57f" stroke-width="2"/>
+  <text x="312" y="230" font-family="Inter, sans-serif" font-size="12" fill="#09795d">Monitoring</text>
   
   <!-- Connecting lines -->
-  <line x1="160" y1="200" x2="160" y2="210" stroke="#3182CE" stroke-width="2"/>
-  <line x1="250" y1="200" x2="250" y2="210" stroke="#3182CE" stroke-width="2"/>
-  <line x1="340" y1="200" x2="340" y2="210" stroke="#3182CE" stroke-width="2"/>
-  <line x1="160" y1="200" x2="340" y2="200" stroke="#3182CE" stroke-width="2"/>
+  <line x1="160" y1="200" x2="160" y2="210" stroke="#0ea57f" stroke-width="2"/>
+  <line x1="250" y1="200" x2="250" y2="210" stroke="#0ea57f" stroke-width="2"/>
+  <line x1="340" y1="200" x2="340" y2="210" stroke="#0ea57f" stroke-width="2"/>
+  <line x1="160" y1="200" x2="340" y2="200" stroke="#0ea57f" stroke-width="2"/>
   
   <!-- Server -->
-  <rect x="220" y="100" width="60" height="20" rx="2" fill="#E6F0FF" stroke="#3182CE" stroke-width="2"/>
-  <rect x="220" y="120" width="60" height="10" rx="1" fill="#F0F9FF" stroke="#3182CE" stroke-width="2"/>
-  <line x1="250" y1="130" x2="250" y2="160" stroke="#3182CE" stroke-width="2" stroke-dasharray="4 2"/>
+  <rect x="220" y="100" width="60" height="20" rx="2" fill="#E6F0FF" stroke="#0ea57f" stroke-width="2"/>
+  <rect x="220" y="120" width="60" height="10" rx="1" fill="#F0F9FF" stroke="#0ea57f" stroke-width="2"/>
+  <line x1="250" y1="130" x2="250" y2="160" stroke="#0ea57f" stroke-width="2" stroke-dasharray="4 2"/>
 </svg> 

@@ -2,29 +2,36 @@
 :root {
   /* Primary colors - based on Edka website */
   --sl-color-accent-low: #e6f0ff;
-  --sl-color-accent: #3182ce;
-  --sl-color-accent-high: #1a4a8c;
+  --sl-color-accent: #008236;
+  --sl-color-accent-high: #008236;
+  --sl-color-button-primary:  rgba(14, 165, 127, 0.4);
+  --sl-color-button-primary-high: rgba(14, 165, 127, 0.5);
   
   /* Text colors */
-  --sl-color-text-accent: #3182ce;
+  --sl-color-text-accent: #008236;
+  --sl-color-text-accent-high: #008236;
+  --sl-color-text-link: #008236;
+  --sl-color-text-link-active: #008236;
   
   /* Custom font stack that's similar to Edka's website */
   --sl-font: 'Inter', 'Segoe UI', system-ui, sans-serif;
   
   /* Adjusting link colors */
-  --sl-color-text-link: #3182ce;
-  --sl-color-text-link-active: #1a4a8c;
+  --sl-color-text-link: #008236;
+  --sl-color-text-link-active: #008236;
 }
 
 /* Dark mode overrides */
 :root[data-theme='dark'] {
+  --sl-color-button-primary:  rgba(5, 223, 114, 0.1);
+  --sl-color-button-primary-high: rgba(5, 223, 114, 0.2);
   --sl-color-accent-low: #203354;
-  --sl-color-accent: #4299e1;
-  --sl-color-accent-high: #a6c8ff;
+  --sl-color-accent: #008236;
+  --sl-color-accent-high: #09795d;
   
-  --sl-color-text-accent: #4299e1;
-  --sl-color-text-link: #4299e1;
-  --sl-color-text-link-active: #a6c8ff;
+  --sl-color-text-accent: #008236;
+  --sl-color-text-link: #008236;
+  --sl-color-text-link-active: #09795d;
 }
 
 /* Additional custom styles */
@@ -35,8 +42,6 @@
 .hero img {
   border-radius: 0.5rem;
 }
-
-/* Card styling to match Edka's design language */
 .card {
   border-radius: 0.5rem;
   border: 1px solid var(--sl-color-gray-5);
@@ -46,4 +51,74 @@
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Homepage hero actions styling */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  justify-content: center;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.button-primary {
+  background-color: var(--sl-color-button-primary);
+  color: white;
+  border: 1px solid #0ea57f;
+  color: #008236;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.button-primary:hover {
+  background-color: var(--sl-color-button-primary-high);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.button-outline {
+  background-color: transparent;
+  color: var(--sl-color-text);
+  border: 1px solid var(--sl-color-gray-5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.button-outline:hover {
+  border-color: var(--sl-color-accent);
+  color: #008236;
+  border: 1px solid #00823689;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Center the header on homepage */
+:where(.content) > h1:first-child {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Center the tagline text */
+:where(.content) > h1:first-child + p {
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--sl-color-gray-3);
+  margin-top: 0;
+  margin-bottom: 2rem;
 } 
