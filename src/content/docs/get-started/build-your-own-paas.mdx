@@ -57,6 +57,8 @@ Some add-ons require additional configuration. While we are working to automate 
 ### Ingress Controller
 Point one or more domain/subdomain DNS records to your cluster's ingress endpoint. You can find this endpoint in the cluster overview, under **Ingress Endpoints**.
 
+
+
 ### External Secrets
 To allow your cluster to fetch secrets from an external provider (this example uses [Doppler](https://www.doppler.com/)), create a secret in your cluster with the provider's credentials. This can be done through the Edka dashboard and referenced in GitOps later.
 
@@ -118,6 +120,11 @@ Edka supports several container registries, including GitHub Container Registry,
 
 Navigate to **Settings** > **Integrations** > **Registry** and select your container registry. Follow the specific instructions for your chosen registry to connect it to your cluster.
 ![Container Registry](https://assets.edka.io/ek_registry_mk1.webp)
+
+Once connected, you have to enable this registry to your cluster and set it as the default registry for your workloads. 
+
+This can be done in the cluster **Settings** > **Registry** > **Apply Registry** > **Set as Default**.
+![Container Registry](https://assets.edka.io/ek_registry.webp)
 
 ## Next Steps
 - [Deploy A Sample Application](/get-started/deploy-a-sample-app/)

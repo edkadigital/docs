@@ -1,82 +1,74 @@
 ---
-title: Quick Start | Create Your First Cluster
-description: Create your first Edka cluster in 2 minutes
+title: Deploy A Sample Application
+description: Deploy a sample application to your Edka cluster
 ---
-This guide will help you set up your first Edka cluster.
+Deploy a sample application to your Edka cluster.
 
 ## Prerequisites
+- Installed Add-ons and configurations from previous steps (see [Build Your Own PaaS](/get-started/build-your-own-paas/))
 
-- A Hetzner Cloud account
-- A Hetzner Cloud API token with read/write permissions
-- [Kubectl](https://kubernetes.io/docs/tasks/tools/) (Kubernetes CLI - only necessary for advanced operations)
-- [Lens](https://k8slens.dev/) - a Kubernetes IDE (optional but recommended for managing your cluster visually)
+## Deploy your first application
+In this example we'll use a preconfigured sample application to demonstrate how to deploy an application on your Edka cluster. The sample application is a Go-based SaaS starter kit that provides a simple web application with a PostgreSQL database backend. It is part of a more complex example, a complete SaaS starter kit, which is available on GitHub [edkadigital/startmeup](https://github.com/edkadigital/startmeup).
 
-If you don't have these yet, see our [Prerequisites](/get-started/prerequisites/) page for detailed instructions.
+The repo already builds a Docker image and pushes it to the GitHub Container Registry and packs the application into a Helm chart.
 
-## Step 1: Create an Edka Account
-
-1. Go to [console.edka.io](https://console.edka.io/signup) and click **Create Account**
-2. Sign up using your email or Google account
-3. Verify your email address
-
-## Step 2: Connect Your Hetzner Account
-
-1. In the Edka dashboard, navigate to **Integrations** > **Hetzner**
-2. Enter your Hetzner API token
-3. Click **Save**
-
-Edka will verify your token and establish a connection to your Hetzner account.</br>
-We'll store your token encrypted and use it to create and manage your clusters.</br>
-You also have the option to use a temporary Hetzner token (not stored) during cluster provisioning. All future operations will require to provide the same token to interact with your Hetzner account.
-
-## Step 3: Create Your First Cluster
-
-1. In the Edka dashboard, navigate to **Clusters**
-2. Choose a name for your cluster (e.g., "dev")
-3. Click **Create Cluster**
-
-Optional settings:
-   - Cluster location (e.g. Nuremberg)
-   - Kubernetes version (e.g., *1.32.1-k3s1*)
-   - Instance type for control plane and node pools (e.g., CX21)
-   - Set a highly available control plane (recommended for production)
-   - Customize the network settings in the *Network* tab
-   - Choose the number of instances and node pools in the *Node Pools* tab
-   - Use temporary Hetzner token (not stored) or store the token for future operations
-
-Edka will provision your Kubernetes cluster in about 2 minutes. You'll see progress as the process completes.
-
-## Step 4: Access Your Cluster
-
-1. In the **Clusters** dashboard, click on your cluster name
-2. Click **Download Kubeconfig** tab
+We'll deploy the sample application to your Edka cluster and enable automatic updates when a new Helm release is available.
 
 
-Set the `KUBECONFIG` environment variable to point to the downloaded file:
+The application requires a PostgreSQL database, which is already set up in the previous steps. The application will connect to the database using the credentials provided in the `values.yaml` file.
 
-```bash
-export KUBECONFIG=/path/to/your/kubeconfig.yaml
+The application expects 2 secrets to work correctly. We'll create both in Doppler.
+```
+1. DATABASE_URL = postgresql://clusterone:your_secret@clusterone-rw.postgres.svc.cluster.local:5432/clusterone?sslmode=disable
+2. ENCRYPTION_KEY = a_long_random_string (e.g. a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6)
+```
+![Secrets](https://assets.edka.io/ek_doppler_app.webp)
+
+Let's add the app in our Git repo
+Save the following YAML file as `startmeup-release.yaml` in the `clusters/clusterone` directory of your GitOps repository.
+```yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: startmeup-release
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: cluster-secrets-store
+    - name: postgres-cluster
+  interval: 3m
+  retryInterval: 2m0s
+  wait: true
+  path: "./clusters/resources/clusterone/app"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+```
+Now create the `app` directory in the `clusters/resources/clusterone/` directory and save the following YAML file as `startmeup-release.yaml` in that directory.
+```yaml
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: startmeup
+  namespace: production
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: startmeup
+      version: ">=0.0.1"
+      sourceRef:
+        kind: HelmRepository
+        name: startmeup
+        namespace: flux-system
+      interval: 1m
+  upgrade:
+    remediation:
+      remediateLastFailure: true
+  test:
+    enable: true
 ```
 
-Verify the connection to your cluster:
 
-```bash
-kubectl get nodes
-```
-
-You should see a list of nodes in your cluster:
-
-```bash
-NAME          STATUS   ROLES                  AGE     VERSION
-edka-dev-cp   Ready    control-plane,master   2m30s   v1.32.1-k3s1
-edka-dev-w1   Ready    worker                 1m45s   v1.32.1-k3s1
-edka-dev-w2   Ready    worker                 1m45s   v1.32.1-k3s1
-```
-
-Alternatively, you can use [Lens](https://k8slens.dev/) to manage your cluster visually. Just add the kubeconfig file to Lens and connect to your cluster.
-
-## Next Steps
-
-Now that you have your first cluster running, let's set up some add-ons to transform it into a full-fledged PaaS:
-- [Build Your Own PaaS](/get-started/build-your-own-paas/)
-- [Deploy A Sample Application](/get-started/deploy-a-sample-application/)
+Replace `your_secret` with the actual `POSTGRES_USER_PASSWORD` secret you created in the [previous steps](/get-started/build-your-own-paas/#cloud-native-postgres).
