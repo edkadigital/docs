@@ -5,10 +5,11 @@ import starlightThemeRapide from "starlight-theme-rapide";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://docs.edka.io",
   integrations: [
     starlight({
       plugins: [starlightThemeRapide()],
-      title: "",
+      title: "Edka Docs",
       social: [
         {
           icon: "github",

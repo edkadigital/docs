@@ -350,3 +350,7 @@ a[data-sl-variant="minimal"]:hover {
   text-decoration: underline;
   color: var(--sl-color-accent-high);
 }
+
+.site-title span {
+  display: none;
+}
