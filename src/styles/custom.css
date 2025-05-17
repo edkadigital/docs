@@ -95,7 +95,6 @@
 
 .button-primary {
   background-color: var(--sl-color-button-primary);
-  color: white;
   border: 1px solid #0ea57f;
   color: #008236;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
