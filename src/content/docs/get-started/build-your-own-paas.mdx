@@ -73,7 +73,7 @@ To allow your cluster to fetch secrets from an external provider, you need to cr
 
 Navigate to **Settings** > **Secrets** and create a new secret with the following values:
 
-- **Cecret Name**: *doppler-token-auth-api*
+- **Name**: *doppler-token-auth-api*
 - **Namespace**: *external-secrets*
 - **Key**: *dopplerToken*
 - **Value** *your-doppler-token*
@@ -81,6 +81,9 @@ Navigate to **Settings** > **Secrets** and create a new secret with the followin
 Press **Create Secret** to save the secret.
 
 ![External Secrets](https://assets.edka.io/ek_secret_store.webp)
+The ClusterSecretsStore will use this secret to authenticate with Doppler and fetch secrets for your projects.
+
+In the blueprint repository, [edkadigital/clusterone](https://github.com/edkadigital/clusterone/blob/main/clusters/resources/clusterone/secrets/cluster-secrets-store.yaml) you can find the configuration for the secrets store. You can also create your own secrets store configuration and reference it in your GitOps repository.
 
 ## Enable GitOps
 Continuous reconciliation for your applications and other cluster resources. Our first release only supports GitHub repositories, but we're working on adding support for other providers soon after.
@@ -93,9 +96,24 @@ Once you have granted permissions to your repositories, navigate to your cluster
 
 ![GitOps](https://assets.edka.io/ek_gitops.webp)
 
+In this example we have connected [edkadigital/clusterone](https://github.com/edkadigital/clusterone) repository to the cluster, which provides a blueprint for the cluster and add-ons configuration. You can inspect the GitOps reconcilation status in the cluster, using `kubectl` command line tool or Lens IDE.
+
+```bash
+$ kubectl get kustomizations --all-namespaces
+NAMESPACE     NAME                    AGE     READY   STATUS
+flux-system   cluster-secrets-store   9m23s   True    Applied revision: refs/heads/main@sha1:c97b810d9d8d0ffc5f70c80a23fe252e7bf13bc7
+flux-system   flux-system             9m29s   True    Applied revision: refs/heads/main@sha1:c97b810d9d8d0ffc5f70c80a23fe252e7bf13bc7
+flux-system   postgres-cluster        9m23s   True    Applied revision: refs/heads/main@sha1:c97b810d9d8d0ffc5f70c80a23fe252e7bf13bc7
+flux-system   shared-components       9m23s   True    Applied revision: refs/heads/main@sha1:c97b810d9d8d0ffc5f70c80a23fe252e7bf13bc7
+```
+
 ## Connect a container registry
 Edka supports several container registries, including GitHub Container Registry, Docker Hub, AWS ECR, and Google Artifact Registry. In this example, we'll use GitHub Container Registry.
 
 Navigate to **Settings** > **Integrations** > **Registry** and select your container registry from the list. Follow the instructions specific to your registry to connect it to your cluster.
 ![Container Registry](https://assets.edka.io/ek_registry_mk1.webp)
 
+Now that you have your first cluster running, let's set up some add-ons to transform it into a full-fledged PaaS:
+
+## Next Steps
+- [Deploy A Sample Application](/get-started/deploy-a-sample-app/)
