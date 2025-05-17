@@ -83,22 +83,3 @@ import Default from "@astrojs/starlight/components/Footer.astro";
   }
 </style>
 
-<script>
-  // Insert the custom footer links after each footer element
-  document.addEventListener("DOMContentLoaded", () => {
-    const customLinks = document.querySelector(".custom-footer-links");
-    if (customLinks) {
-      const footer = document.querySelector("footer");
-      if (
-        footer &&
-        !footer.nextElementSibling?.classList.contains("custom-footer-links")
-      ) {
-        footer.parentNode?.insertBefore(
-          customLinks.cloneNode(true),
-          footer.nextSibling,
-        );
-      }
-    }
-  });
-</script>
-

@@ -15,10 +15,12 @@
     "check": "pnpm format && pnpm lint"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/starlight": "^0.34.3",
     "astro": "^5.7.13",
     "sharp": "^0.34.1",
-    "starlight-theme-rapide": "^0.5.1"
+    "starlight-theme-rapide": "^0.5.1",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
