@@ -6,14 +6,14 @@ import { Steps } from '@astrojs/starlight/components';
 
 **Transform your Kubernetes cluster into a full-fledged PaaS with Edka.**
 
-This guide uses a specific set of add-ons to demomnstrate the process. You can choose to install any add-ons you like, according to your needs, either through the Edka dashboard, GitOps or directly through your Kubernetes cluster API.
+This guide uses a specific set of add-ons to demonstrate the process. You can choose to install any add-ons you like, according to your needs, either through the Edka dashboard, GitOps or directly through your Kubernetes cluster API.
 
 For this example, we'll configure:
 - an ingress controller to expose your applications to the internet
 - a certificate management to automatically provision and renew TLS certificates
 - a database operator to manage PostgreSQL databases with high availability, backups and point-in-time recovery from AWS S3
 - a secrets management add-on to sync secrets from an external providers into your Kubernetes cluster and avoid hardcoding secrets in your Git repositories
-- integratrion with an external container registry to enable automatic image pull/push for your workloads
+- integration with an external container registry to enable automatic image pull/push for your workloads
 - a GitOps add-on ([FluxCD](https://fluxcd.io)) to enable continuous reconciliation (GitOps) for your applications and other cluster resources from a Git repository
 
 ## Workflow
@@ -25,11 +25,11 @@ For this example, we'll configure:
 
 ## Prerequisites
 
-- A Edka cluster (previously created). If you didn't create one yet, see our [Create Your First Cluster](/get-started/create-a-cluster/) guide.
+- An Edka cluster (previously created). If you didn't create one yet, see our [Create Your First Cluster](/get-started/create-a-cluster/) guide.
 - One or more domain names that you own and can configure DNS records to point to your cluster.
 
 ## Install Add-ons
-In your cluster overview, navigate to **Setting** > **Add-ons**
+In your cluster overview, navigate to **Settings** > **Add-ons**
 ![Cluster](https://assets.edka.io/ek_addons.webp)
 
 Edka provides a curated set of production add-ons that can be installed on your cluster.
@@ -46,7 +46,7 @@ Edka provides a curated set of production add-ons that can be installed on your 
       </li>
       <li>
          <strong>Certificate Issuer</strong>
-         <p>This is required to communicate with the provider for your certificates, in this example Let's Encrypt, but you can configure other issuers directly on your Kubernets cluster. Cert Manager add-on is required for this to work.</p>
+         <p>This is required to communicate with the provider for your certificates, in this example Let's Encrypt, but you can configure other issuers directly on your Kubernetes cluster. Cert Manager add-on is required for this to work.</p>
       </li>
       <li>
          <strong>Cloud Native Postgres</strong>
@@ -69,7 +69,7 @@ Ingress controller only requires one or more domain/subdomain to be pointed to t
 ### External Secrets
 To allow your cluster to fetch secrets from an external provider, you need to create a secret in your cluster with the credentials for your external provider. This can be done through the Edka dashboard and referenced in GitOps later.
 
-*Note: this example uses [Dopppler](https://www.doppler.com/) as the external secrets provider, but you can use any other supported provider.*
+*Note: this example uses [Doppler](https://www.doppler.com/) as the external secrets provider, but you can use any other supported provider.*
 
 Navigate to **Settings** > **Secrets** and create a new secret with the following values:
 
@@ -96,7 +96,7 @@ Once you have granted permissions to your repositories, navigate to your cluster
 
 ![GitOps](https://assets.edka.io/ek_gitops.webp)
 
-In this example we have connected [edkadigital/clusterone](https://github.com/edkadigital/clusterone) repository to the cluster, which provides a blueprint for the cluster and add-ons configuration. You can inspect the GitOps reconcilation status in the cluster, using `kubectl` command line tool or Lens IDE.
+In this example we have connected [edkadigital/clusterone](https://github.com/edkadigital/clusterone) repository to the cluster, which provides a blueprint for the cluster and add-ons configuration. You can inspect the GitOps reconciliation status in the cluster, using `kubectl` command line tool or Lens IDE.
 
 ```bash
 $ kubectl get kustomizations --all-namespaces
