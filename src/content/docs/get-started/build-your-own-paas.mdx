@@ -72,7 +72,24 @@ Press **Create Secret** to save the secret.
 ![External Secrets](https://assets.edka.io/ek_secret_store.webp)
 The ClusterSecretsStore will use this secret to authenticate with Doppler and fetch secrets for your projects.
 
-In the blueprint repository, [edkadigital/clusterone](https://github.com/edkadigital/clusterone/blob/main/clusters/resources/clusterone/secrets/cluster-secrets-store.yaml) you can find the configuration for the secrets store. You can also create your own secrets store configuration and reference it in your GitOps repository.
+In the blueprint repository, [edkadigital/blueprint](https://github.com/edkadigital/blueprint/blob/main/clusters/resources/clusterone/secrets/cluster-secrets-store.yaml) you can find the configuration for the secrets store. You can also create your own secrets store configuration and reference it in your GitOps repository.
+
+### Cloud Native Postgres
+This add-on requires several credentials for your PostgreSQL database cluster. The blueprint repository is configured to fetch secrets with the following names from Doppler. You will need to create these in your Doppler project:
+
+- **Bootstrap Database Credentials:**
+  - `POSTGRES_USER`
+  - `POSTGRES_USER_PASSWORD`
+- **Cluster SuperUser Credentials:**
+  - `POSTGRES_SUPERUSER`
+  - `POSTGRES_SUPERUSER_PASSWORD`
+- **AWS S3 Credentials (for database backups):**
+  - `ACCESS_KEY_ID`
+  - `ACCESS_SECRET_KEY`
+
+The blueprint repository is configured to automatically use these Doppler secrets to create the necessary Kubernetes secrets in your cluster.
+
+![Secrets](https://assets.edka.io/ek_doppler.webp)
 
 ## 3. Enable GitOps
 Enable continuous reconciliation for your applications and cluster resources. Our initial release supports GitHub repositories, with other providers planned for future updates.
@@ -85,7 +102,7 @@ Once permissions are granted, go to your cluster's **Settings** > **GitOps**. Se
 
 ![GitOps](https://assets.edka.io/ek_gitops.webp)
 
-In this example we have connected [edkadigital/clusterone](https://github.com/edkadigital/clusterone) repository to the cluster, which provides a blueprint for the cluster and add-ons configuration. You can inspect the GitOps reconciliation status in the cluster, using `kubectl` command line tool or Lens IDE.
+In this example we connect [edkadigital/blueprint](https://github.com/edkadigital/blueprint) repository to the cluster, which provides a blueprint for the cluster and add-ons configuration. You can inspect the GitOps reconciliation status in the cluster, using `kubectl` command line tool or Lens IDE.
 
 ```bash
 $ kubectl get kustomizations --all-namespaces
