@@ -57,12 +57,13 @@ You'll need a container registry to store your application images. Edka supports
 
 ## Secrets Management (Optional)
 
-For secure handling of secrets, Edka integrates with several external secrets providers:
+For secure handling of secrets, and hybrid environments, Edka integrates with several external secrets providers thru [External Secrets Operator](https://external-secrets.io/latest/) as an add-on. This allows you to sync secrets from your external provider directly into your Kubernetes cluster.:
 
 - [Doppler](https://www.doppler.com/) (recommended for ease of use)
 - [1Password](https://1password.com/)
 - [HashiCorp Vault](https://www.vaultproject.io/)
 - [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)
+- [Full List of Supported Providers](https://external-secrets.io/latest/provider/aws-secrets-manager/)
 
 ## Domain Name (Optional)
 
@@ -74,4 +75,4 @@ If you want to expose your applications to the internet with custom domains:
 
 ## Next Steps
 
-Once you have all the prerequisites in place, you're ready to [create your first cluster](/get-started/quick-start/)! 
+Once you have all the prerequisites in place, you're ready to [create your first cluster](/get-started/create-a-cluster/)! 

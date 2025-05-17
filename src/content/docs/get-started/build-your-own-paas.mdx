@@ -1,0 +1,101 @@
+---
+title: Build Your Own PaaS
+description: Transform your Kubernetes cluster into a full-fledged PaaS with Edka
+---
+import { Steps } from '@astrojs/starlight/components';
+
+**Transform your Kubernetes cluster into a full-fledged PaaS with Edka.**
+
+This guide uses a specific set of add-ons to demomnstrate the process. You can choose to install any add-ons you like, according to your needs, either through the Edka dashboard, GitOps or directly through your Kubernetes cluster API.
+
+For this example, we'll configure:
+- an ingress controller to expose your applications to the internet
+- a certificate management to automatically provision and renew TLS certificates
+- a database operator to manage PostgreSQL databases with high availability, backups and point-in-time recovery from AWS S3
+- a secrets management add-on to sync secrets from an external providers into your Kubernetes cluster and avoid hardcoding secrets in your Git repositories
+- integratrion with an external container registry to enable automatic image pull/push for your workloads
+- a GitOps add-on ([FluxCD](https://fluxcd.io)) to enable continuous reconciliation (GitOps) for your applications and other cluster resources from a Git repository
+
+## Workflow
+- Install the add-ons from your cluster settings
+- Provide extra configurations for the add-ons to work with your cluster
+- Sync your secrets from an external provider into your Kubernetes cluster
+- Connect a Git repository to enable continuous reconciliation (GitOps)
+- Connect a container registry to enable automatic image pull/push for your workloads
+
+## Prerequisites
+
+- A Edka cluster (previously created). If you didn't create one yet, see our [Create Your First Cluster](/get-started/create-a-cluster/) guide.
+- One or more domain names that you own and can configure DNS records to point to your cluster.
+
+## Install Add-ons
+In your cluster overview, navigate to **Setting** > **Add-ons**
+![Cluster](https://assets.edka.io/ek_addons.webp)
+
+Edka provides a curated set of production add-ons that can be installed on your cluster.
+<Steps>
+   <ol>
+      <li>
+         <strong>Ingress Controller</strong>
+         <p>An Ingress controller is required to expose your applications to the internet.</p>
+         <p>It automatically provisions a load balancer from your cloud provider and configures the necessary rules to route traffic to your applications.</p>
+      </li>
+      <li>
+         <strong>Certificate Management</strong>
+         <p>It integrates with your Ingress Controller to automatically provision and renew TLS certificates for your applications.</p>
+      </li>
+      <li>
+         <strong>Certificate Issuer</strong>
+         <p>This is required to communicate with the provider for your certificates, in this example Let's Encrypt, but you can configure other issuers directly on your Kubernets cluster. Cert Manager add-on is required for this to work.</p>
+      </li>
+      <li>
+         <strong>Cloud Native Postgres</strong>
+         <p>This is a PostgreSQL operator that automates the provisioning and management of PostgreSQL clusters on Kubernetes. It covers the full lifecycle of a highly available PostgreSQL database cluster with a primary/standby architecture, using native streaming replication.</p>
+      </li>
+      <li>
+         <strong>External Secrets</strong>
+         <p>This add-on allows you to sync secrets from external providers into your Kubernetes cluster. It supports a wide range of providers, including AWS Secrets Manager, HashiCorp Vault, Doppler, and more.</p>
+      </li>
+   </ol>
+</Steps>
+
+
+## Customize Your Add-ons
+Some add-ons require additional configuration to work properly. Currently, there are some manual steps, but we're working on automating this process in the near future.
+
+### Ingress Controller
+Ingress controller only requires one or more domain/subdomain to be pointed to the ingress endpoint. You can see your ingress endpoint in the cluster overview, under **Ingress Endpoints**.
+
+### External Secrets
+To allow your cluster to fetch secrets from an external provider, you need to create a secret in your cluster with the credentials for your external provider. This can be done through the Edka dashboard and referenced in GitOps later.
+
+*Note: this example uses [Dopppler](https://www.doppler.com/) as the external secrets provider, but you can use any other supported provider.*
+
+Navigate to **Settings** > **Secrets** and create a new secret with the following values:
+
+- **Cecret Name**: *doppler-token-auth-api*
+- **Namespace**: *external-secrets*
+- **Key**: *dopplerToken*
+- **Value** *your-doppler-token*
+
+Press **Create Secret** to save the secret.
+
+![External Secrets](https://assets.edka.io/ek_secret_store.webp)
+
+## Enable GitOps
+Continuous reconciliation for your applications and other cluster resources. Our first release only supports GitHub repositories, but we're working on adding support for other providers soon after.
+
+#### GitHub Integration
+To enable GitOps, you first have to integrate it with GitHub and grant permissions to one or more repositories you plan to use. Navigate to **Settings** > **Integrations** > **GitHub** and grant permissions to your repositories.
+![GitHub](https://assets.edka.io/ek_github.webp)
+#### GitOps Configuration
+Once you have granted permissions to your repositories, navigate to your cluster **Settings** > **GitOps** and select the repository and branch you want to use for GitOps.
+
+![GitOps](https://assets.edka.io/ek_gitops.webp)
+
+## Connect a container registry
+Edka supports several container registries, including GitHub Container Registry, Docker Hub, AWS ECR, and Google Artifact Registry. In this example, we'll use GitHub Container Registry.
+
+Navigate to **Settings** > **Integrations** > **Registry** and select your container registry from the list. Follow the instructions specific to your registry to connect it to your cluster.
+![Container Registry](https://assets.edka.io/ek_registry_mk1.webp)
+

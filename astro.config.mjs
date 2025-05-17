@@ -39,7 +39,9 @@ export default defineConfig({
               {
                   label: 'Get Started',
                   items: [
-                      { label: 'Quick Start', link: '/get-started/quick-start/' },
+                      { label: 'Quick Start: Create a cluster', link: '/get-started/create-a-cluster/' },
+                      { label: 'Quick Start: Build your own PaaS', link: '/get-started/build-your-own-paas/' },
+                      { label: 'Quick Start: Deploy a sample app', link: '/get-started/deploy-a-sample-app/' },
                       { label: 'Prerequisites', link: '/get-started/prerequisites/' },
                   ],
               },

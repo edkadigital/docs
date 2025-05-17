@@ -1,4 +1,4 @@
-# Edka Documentation
+# Edka Developer Documentation
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
@@ -49,7 +49,7 @@ All commands are run from the root of the project, from a terminal:
 Use relative links between pages:
 
 ```markdown
-[Link to Quick Start](/get-started/quick-start/)
+[Link to Quick Start](/get-started/create-a-cluster/)
 ```
 
 ### Adding Images

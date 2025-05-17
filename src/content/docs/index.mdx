@@ -1,47 +1,55 @@
 ---
-title: Edka Documentation
+title: Edka developer documentation (Beta)
 description: Deploy anything with Edka - The self-hosted PaaS you can outgrow by design.
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { LinkButton } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
 
-Provision a full infrastructure in under 2 minutes.
+## About Edka
+
+Edka automates the creation of a production‑ready Platform as a Service (PaaS) on top of standard cloud virtual machines and Kubernetes. 
+It reduces the manual effort required to run applications on Kubernetes by providing preconfigured opensource add-ons that turn a Kubernetes cluster into a full-fledged PaaS.
+
+Edka helps provisioning and managing Kubernetes clusters on your own Hetzner Cloud account. If you disconnect Edka, you can continue to manage your cluster manually or with other tools, like `kubectl`. 
+
+## How It Works
+
+<Steps>
+  <ol>
+    <li>
+      <strong>Cluster Bootstrap</strong>
+      <p>Creates a Kubernetes cluster on Hetzner Cloud (additional providers are planned). Configures control‑plane through a simple UI.</p>
+    </li>
+    <li>
+      <strong>Add‑ons Installation</strong>
+      <p>Installs a curated set of production add‑ons: ingress and certificate management, logging, metrics, tracing, autoscaling and database operators.</p>
+    </li>
+	<li>
+	  <strong>Connect a Container Registry</strong>
+	  <p>Connect a container registry to enable automatic image pull/push for your workloads.</p>
+	</li>
+	<li>
+	  <strong>Sync Your Secrets</strong>
+	  <p>Edka supports external secret management tools like 1Passowrd, Doppler, HashiCorp Vault, AWS Secrets Manager, and more. Secrets are synced directly to your clusters.</p>
+	</li>
+    <li>
+      <strong>GitOps</strong>
+      <p>Connect a Git repository to enable continuous reconciliation (GitOps). Manifests pushed to the repository are applied automatically.</p>
+    </li>
+  </ol>
+</Steps>
 
 <div class="hero-actions">
-  <a href="/get-started/quick-start/" class="button button-primary">Get Started Now</a>
-  <a href="https://edka.io" class="button button-outline">Visit Website</a>
+  <LinkButton href="/get-started/create-a-cluster" variant="primary">
+    <Icon name="rocket" size="1.2em" />
+    Create Your First Cluster
+  </LinkButton>
+  <LinkButton href="https://edka.io" variant="outline">
+    <Icon name="external" size="1.2em" />
+    Visit Website
+  </LinkButton>
 </div>
 
-## The self-hosted PaaS you can outgrow by design
-
-<CardGrid stagger>
-	<Card title="Own Everything" icon="setting">
-		Your workloads run in your own Hetzner account with up to 90% cost savings versus AWS or GCP.
-	</Card>
-	<Card title="Instant Provisioning" icon="rocket">
-		Deploy a hardened, production-ready k3s Kubernetes cluster in minutes.
-	</Card>
-	<Card title="GitOps Deployments" icon="github">
-		Connect your GitHub or GitLab repository for automated CI/CD and seamless rollouts.
-	</Card>
-	<Card title="Add-ons Marketplace" icon="puzzle">
-		One-click installation of databases, ingress controllers, observability tools, and more.
-	</Card>
-</CardGrid>
-
-## Key Benefits
-
-<CardGrid>
-	<Card title="Cloud Freedom" icon="open-book">
-		Pay Hetzner's list price directly, with no markup. Cut your cloud bill by up to 90%.
-	</Card>
-	<Card title="Simple Subscription" icon="star">
-		A flat per-cluster fee covers automation, integrations, upgrades, and backups. One cluster always free.
-	</Card>
-	<Card title="No Vendor Lock-in" icon="setting">
-		Detach Edka with one click; workloads keep running and all resources remain yours.
-	</Card>
-	<Card title="Full Control" icon="bars">
-		CNCF-based open-standards for portability with no compromises on flexibility.
-	</Card>
-</CardGrid>
