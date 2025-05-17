@@ -1,36 +1,71 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+title: Edka developer documentation (Beta)
+description: Deploy anything with Edka - The self-hosted PaaS you can outgrow by design.
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Steps } from "@astrojs/starlight/components";
+import { LinkButton } from "@astrojs/starlight/components";
+import { Icon } from "@astrojs/starlight/components";
 
-## Next steps
+## About Edka
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+Edka automates the creation of a production‑ready Platform as a Service (PaaS) on top of standard cloud virtual machines and Kubernetes.
+It reduces the manual effort required to run applications on Kubernetes by providing preconfigured opensource add-ons that turn a Kubernetes cluster into a full-fledged PaaS.
+
+Edka helps provisioning and managing Kubernetes clusters on your own Hetzner Cloud account. If you disconnect Edka, you can continue to manage your cluster manually or with other tools, like `kubectl`.
+
+## How It Works
+
+<Steps>
+  <ol>
+    <li>
+      <strong>Cluster Bootstrap</strong>
+      <p>
+        Creates a Kubernetes cluster on Hetzner Cloud (additional providers are
+        planned). Configures control‑plane through a simple UI.
+      </p>
+    </li>
+    <li>
+      <strong>Add‑ons Installation</strong>
+      <p>
+        Installs a curated set of production add‑ons: ingress and certificate
+        management, logging, metrics, tracing, autoscaling and database
+        operators.
+      </p>
+    </li>
+    <li>
+      <strong>Connect a Container Registry</strong>
+      <p>
+        Connect a container registry to enable automatic image pull/push for
+        your workloads.
+      </p>
+    </li>
+    <li>
+      <strong>Sync Your Secrets</strong>
+      <p>
+        Edka supports external secret management tools like 1Password, Doppler,
+        HashiCorp Vault, AWS Secrets Manager, and more. Secrets are synced
+        directly to your clusters.
+      </p>
+    </li>
+    <li>
+      <strong>GitOps</strong>
+      <p>
+        Connect a Git repository to enable continuous reconciliation (GitOps).
+        Manifests pushed to the repository are applied automatically.
+      </p>
+    </li>
+  </ol>
+</Steps>
+
+<div class="hero-actions">
+  <LinkButton href="/get-started/create-a-cluster" variant="primary">
+    <Icon name="rocket" size="1.2em" />
+    Create Your First Cluster
+  </LinkButton>
+  <LinkButton href="https://edka.io" variant="outline">
+    <Icon name="external" size="1.2em" />
+    Visit Website
+  </LinkButton>
+</div>

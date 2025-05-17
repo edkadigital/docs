@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 112">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#New_Gradient_Swatch_8);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#New_Gradient_Swatch_9);
+      }
+
+      .cls-3 {
+        fill: url(#New_Gradient_Swatch_8-2);
+      }
+
+      .cls-4 {
+        fill: url(#New_Gradient_Swatch_9-2);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-6 {
+        fill: url(#New_Gradient_Swatch_10-2);
+      }
+
+      .cls-7 {
+        fill: url(#New_Gradient_Swatch_11-2);
+      }
+
+      .cls-8 {
+        fill: url(#New_Gradient_Swatch_13-2);
+      }
+
+      .cls-9 {
+        fill: url(#New_Gradient_Swatch_13);
+      }
+
+      .cls-10 {
+        fill: url(#New_Gradient_Swatch_10);
+      }
+
+      .cls-11 {
+        fill: url(#New_Gradient_Swatch_15);
+      }
+
+      .cls-12 {
+        fill: url(#New_Gradient_Swatch_11);
+      }
+
+      .cls-13 {
+        fill: url(#New_Gradient_Swatch_14);
+      }
+
+      .cls-14 {
+        fill: #0f172a;
+      }
+    </style>
+    <linearGradient id="New_Gradient_Swatch_13" data-name="New Gradient Swatch 13" x1="31.1" y1="26.67" x2="50.67" y2="26.67" gradientTransform="translate(30.81 -21.03) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fbb040"/>
+      <stop offset="1" stop-color="#fecf8d"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_15" data-name="New Gradient Swatch 15" x1="60.25" y1="56.15" x2="79.9" y2="56.15" gradientTransform="translate(60.29 -33.25) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2b8f9e"/>
+      <stop offset="1" stop-color="#6fcbd0"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_14" data-name="New Gradient Swatch 14" x1="50.67" y1="46.32" x2="70.15" y2="46.32" gradientTransform="translate(50.46 -29.17) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0ea57f"/>
+      <stop offset="1" stop-color="#70c7ad"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_8" data-name="New Gradient Swatch 8" x1="11.29" y1="65.97" x2="30.54" y2="65.97" gradientTransform="translate(52.84 4.38) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ec1c24"/>
+      <stop offset="1" stop-color="#be1f24"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_8-2" data-name="New Gradient Swatch 8" x1="11.45" y1="46.32" x2="30.54" y2="46.32" gradientTransform="translate(38.95 -1.38) rotate(45)" xlink:href="#New_Gradient_Swatch_8"/>
+    <linearGradient id="New_Gradient_Swatch_9" data-name="New Gradient Swatch 9" x1="1.71" y1="75.8" x2="20.95" y2="75.8" gradientTransform="translate(56.91 14.2) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ec1c24"/>
+      <stop offset="1" stop-color="#f15a29"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_11" data-name="New Gradient Swatch 11" x1="21.19" y1="95.45" x2="40.68" y2="95.45" gradientTransform="translate(76.56 6.06) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7941e"/>
+      <stop offset="1" stop-color="#fbb040"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_10" data-name="New Gradient Swatch 10" x1="11.37" y1="85.63" x2="30.72" y2="85.63" gradientTransform="translate(66.74 10.13) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f15829"/>
+      <stop offset="1" stop-color="#f7941e"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_13-2" data-name="New Gradient Swatch 13" x1="30.94" y1="85.63" x2="50.59" y2="85.63" gradientTransform="translate(72.49 -3.77) rotate(45)" xlink:href="#New_Gradient_Swatch_13"/>
+    <linearGradient id="linear-gradient" x1="50.67" y1="65.97" x2="69.91" y2="65.97" gradientTransform="translate(64.35 -23.42) rotate(45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2aa986"/>
+      <stop offset="1" stop-color="#75c9b1"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_11-2" data-name="New Gradient Swatch 11" x1="21.27" y1="16.84" x2="40.77" y2="16.84" gradientTransform="translate(20.98 -16.96) rotate(45)" xlink:href="#New_Gradient_Swatch_11"/>
+    <linearGradient id="New_Gradient_Swatch_9-2" data-name="New Gradient Swatch 9" x1="1.54" y1="36.49" x2="20.96" y2="36.49" gradientTransform="translate(29.11 2.69) rotate(45)" xlink:href="#New_Gradient_Swatch_9"/>
+    <linearGradient id="New_Gradient_Swatch_10-2" data-name="New Gradient Swatch 10" x1="11.29" y1="26.67" x2="30.69" y2="26.67" gradientTransform="translate(25.05 -7.14) rotate(45.01)" xlink:href="#New_Gradient_Swatch_10"/>
+  </defs>
+  <g>
+    <rect class="cls-9" x="33.84" y="19.72" width="13.9" height="13.9" transform="translate(-6.91 36.66) rotate(-45)"/>
+    <rect class="cls-11" x="63.32" y="49.2" width="13.9" height="13.9" transform="translate(-19.12 66.14) rotate(-45)"/>
+    <rect class="cls-13" x="53.5" y="39.37" width="13.9" height="13.9" transform="translate(-15.05 56.31) rotate(-45)"/>
+    <rect class="cls-1" x="14.19" y="59.02" width="13.9" height="13.9" transform="translate(-40.46 34.27) rotate(-45)"/>
+    <rect class="cls-3" x="14.19" y="39.37" width="13.9" height="13.9" transform="translate(-26.56 28.51) rotate(-45)"/>
+    <rect class="cls-2" x="4.36" y="68.85" width="13.9" height="13.9" transform="translate(-50.28 30.2) rotate(-45)"/>
+    <rect class="cls-12" x="24.02" y="88.51" width="13.9" height="13.9" transform="translate(-58.42 49.85) rotate(-45)"/>
+    <rect class="cls-10" x="14.19" y="78.68" width="13.9" height="13.9" transform="translate(-54.36 40.03) rotate(-45)"/>
+    <rect class="cls-8" x="33.84" y="78.68" width="13.9" height="13.9" transform="translate(-48.6 53.92) rotate(-45)"/>
+    <rect class="cls-5" x="53.5" y="59.02" width="13.9" height="13.9" transform="translate(-28.95 62.06) rotate(-45)"/>
+    <rect class="cls-7" x="24.01" y="9.89" width="13.9" height="13.9" transform="translate(-2.84 26.83) rotate(-45)"/>
+    <rect class="cls-4" x="4.36" y="29.54" width="13.9" height="13.9" transform="translate(-22.49 18.68) rotate(-45)"/>
+    <rect class="cls-6" x="14.19" y="19.72" width="13.9" height="13.9" transform="translate(-12.66 22.76) rotate(-45.01)"/>
+  </g>
+  <g>
+    <path class="cls-14" d="M99.78,36.49h24.49v4.54h-19.42v12.34h18.12v4.54h-18.12v13.34h19.48v4.54h-24.55v-39.31Z"/>
+    <path class="cls-14" d="M149.16,36.49c9.62,0,12.63,5.01,12.63,11.27v16.76c0,6.26-3.01,11.27-12.63,11.27h-15v-39.31h15ZM139.24,71.25h9.75c5.96,0,7.73-2.48,7.73-7.08v-16.05c0-4.6-1.77-7.08-7.73-7.08h-9.75v30.22Z"/>
+    <path class="cls-14" d="M176.7,75.8h-5.08v-39.31h5.08v39.31ZM183.66,55.79l15.58,20.01h-6.08l-15.23-20.01,15.34-19.3h5.96l-15.58,19.3Z"/>
+    <path class="cls-14" d="M238,75.8h-5.13l-3.25-9.44h-16.7l-3.18,9.44h-5.13l13.28-39.31h6.85l13.28,39.31ZM221.29,40.15l-7.02,21.78h14.05l-7.02-21.78Z"/>
+  </g>
+</svg>
