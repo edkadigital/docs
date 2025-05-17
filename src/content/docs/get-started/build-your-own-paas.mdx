@@ -6,33 +6,24 @@ import { Steps } from '@astrojs/starlight/components';
 
 **Transform your Kubernetes cluster into a full-fledged PaaS with Edka.**
 
-This guide uses a specific set of add-ons to demonstrate the process. You can choose to install any add-ons you like, according to your needs, either through the Edka dashboard, GitOps or directly through your Kubernetes cluster API.
+This guide demonstrates how to configure a selection of add-ons to enhance your Edka cluster. You can choose to install any add-ons according to your needs, either through the Edka dashboard, GitOps, or directly via the Kubernetes cluster API.
 
-For this example, we'll configure:
-- an ingress controller to expose your applications to the internet
-- a certificate management to automatically provision and renew TLS certificates
-- a database operator to manage PostgreSQL databases with high availability, backups and point-in-time recovery from AWS S3
-- a secrets management add-on to sync secrets from an external providers into your Kubernetes cluster and avoid hardcoding secrets in your Git repositories
-- integration with an external container registry to enable automatic image pull/push for your workloads
-- a GitOps add-on ([FluxCD](https://fluxcd.io)) to enable continuous reconciliation (GitOps) for your applications and other cluster resources from a Git repository
-
-## Workflow
-- Install the add-ons from your cluster settings
-- Provide extra configurations for the add-ons to work with your cluster
-- Sync your secrets from an external provider into your Kubernetes cluster
-- Connect a Git repository to enable continuous reconciliation (GitOps)
-- Connect a container registry to enable automatic image pull/push for your workloads
+For this example, we'll cover:
+- Installing essential add-ons (ingress, certificates, database operator, secrets management).
+- Configuring these add-ons.
+- Integrating with external services like a secrets provider, GitHub account and a container registry.
+- Enabling GitOps for continuous reconciliation.
 
 ## Prerequisites
 
 - An Edka cluster (previously created). If you didn't create one yet, see our [Create Your First Cluster](/get-started/create-a-cluster/) guide.
-- One or more domain names that you own and can configure DNS records to point to your cluster.
+- One or more domain names that you own and can configure DNS records to point to your cluster ingress endpoint.
 
-## Install Add-ons
-In your cluster overview, navigate to **Settings** > **Add-ons**
+## 1. Install Add-ons
+Start by navigating to **Settings** in your cluster overview, then go to the **Add-ons** section.
 ![Cluster](https://assets.edka.io/ek_addons.webp)
 
-Edka provides a curated set of production add-ons that can be installed on your cluster.
+Edka provides a curated set of production ready add-ons that can be installed on your cluster. For this guide, install the following:
 <Steps>
    <ol>
       <li>
@@ -60,18 +51,16 @@ Edka provides a curated set of production add-ons that can be installed on your 
 </Steps>
 
 
-## Customize Your Add-ons
-Some add-ons require additional configuration to work properly. Currently, there are some manual steps, but we're working on automating this process in the near future.
+## 2. Customize Your Add-ons
+Some add-ons require additional configuration. While we are working to automate this, some manual steps are currently needed.
 
 ### Ingress Controller
-Ingress controller only requires one or more domain/subdomain to be pointed to the ingress endpoint. You can see your ingress endpoint in the cluster overview, under **Ingress Endpoints**.
+Point one or more domain/subdomain DNS records to your cluster's ingress endpoint. You can find this endpoint in the cluster overview, under **Ingress Endpoints**.
 
 ### External Secrets
-To allow your cluster to fetch secrets from an external provider, you need to create a secret in your cluster with the credentials for your external provider. This can be done through the Edka dashboard and referenced in GitOps later.
+To allow your cluster to fetch secrets from an external provider (this example uses [Doppler](https://www.doppler.com/)), create a secret in your cluster with the provider's credentials. This can be done through the Edka dashboard and referenced in GitOps later.
 
-*Note: this example uses [Doppler](https://www.doppler.com/) as the external secrets provider, but you can use any other supported provider.*
-
-Navigate to **Settings** > **Secrets** and create a new secret with the following values:
+In your cluster's **Settings**, navigate to **Secrets** and create a new secret with the following values:
 
 - **Name**: *doppler-token-auth-api*
 - **Namespace**: *external-secrets*
@@ -85,14 +74,14 @@ The ClusterSecretsStore will use this secret to authenticate with Doppler and fe
 
 In the blueprint repository, [edkadigital/clusterone](https://github.com/edkadigital/clusterone/blob/main/clusters/resources/clusterone/secrets/cluster-secrets-store.yaml) you can find the configuration for the secrets store. You can also create your own secrets store configuration and reference it in your GitOps repository.
 
-## Enable GitOps
-Continuous reconciliation for your applications and other cluster resources. Our first release only supports GitHub repositories, but we're working on adding support for other providers soon after.
+## 3. Enable GitOps
+Enable continuous reconciliation for your applications and cluster resources. Our initial release supports GitHub repositories, with other providers planned for future updates.
 
 #### GitHub Integration
-To enable GitOps, you first have to integrate it with GitHub and grant permissions to one or more repositories you plan to use. Navigate to **Settings** > **Integrations** > **GitHub** and grant permissions to your repositories.
+First, integrate with GitHub by navigating to **Settings** > **Integrations** > **GitHub**. Grant permissions to the repositories you plan to use.
 ![GitHub](https://assets.edka.io/ek_github.webp)
 #### GitOps Configuration
-Once you have granted permissions to your repositories, navigate to your cluster **Settings** > **GitOps** and select the repository and branch you want to use for GitOps.
+Once permissions are granted, go to your cluster's **Settings** > **GitOps**. Select the repository and branch for GitOps.
 
 ![GitOps](https://assets.edka.io/ek_gitops.webp)
 
@@ -107,13 +96,11 @@ flux-system   postgres-cluster        9m23s   True    Applied revision: refs/hea
 flux-system   shared-components       9m23s   True    Applied revision: refs/heads/main@sha1:c97b810d9d8d0ffc5f70c80a23fe252e7bf13bc7
 ```
 
-## Connect a container registry
-Edka supports several container registries, including GitHub Container Registry, Docker Hub, AWS ECR, and Google Artifact Registry. In this example, we'll use GitHub Container Registry.
+## 4. Connect a Container Registry
+Edka supports several container registries, including GitHub Container Registry, Docker Hub, AWS ECR, and Google Artifact Registry. This example uses GitHub Container Registry.
 
-Navigate to **Settings** > **Integrations** > **Registry** and select your container registry from the list. Follow the instructions specific to your registry to connect it to your cluster.
+Navigate to **Settings** > **Integrations** > **Registry** and select your container registry. Follow the specific instructions for your chosen registry to connect it to your cluster.
 ![Container Registry](https://assets.edka.io/ek_registry_mk1.webp)
-
-Now that you have your first cluster running, let's set up some add-ons to transform it into a full-fledged PaaS:
 
 ## Next Steps
 - [Deploy A Sample Application](/get-started/deploy-a-sample-app/)
