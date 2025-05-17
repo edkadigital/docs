@@ -21,13 +21,25 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 </div>
 
 <script>
-  const editLink = document.querySelector('.custom-footer-links a:last-child');
-  if (editLink) {
-    const path = window.location.pathname === '/' 
-      ? '/index.md' 
-      : window.location.pathname.replace(/\/$/, '') + '.md';
-    editLink.setAttribute('href', `https://github.com/edkadigital/docs/edit/main${path}`);
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    // Update the "Edit this page on GitHub" link
+    const editLink = document.querySelector('.custom-footer-links a:last-child');
+    if (editLink) {
+      const path = window.location.pathname === '/' 
+        ? '/index.md' 
+        : window.location.pathname.replace(/\/$/, '') + '.md';
+      editLink.setAttribute('href', `https://github.com/edkadigital/docs/edit/main${path}`);
+    }
+
+    // Insert the custom footer links after each footer element
+    const customLinks = document.querySelector('.custom-footer-links');
+    if (customLinks) {
+      const footer = document.querySelector('footer');
+      if (footer && !footer.nextElementSibling?.classList.contains('custom-footer-links')) {
+        footer.parentNode?.insertBefore(customLinks.cloneNode(true), footer.nextSibling);
+      }
+    }
+  });
 </script>
 
 <style>
