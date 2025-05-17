@@ -1,19 +1,13 @@
 ---
-import Default from '@astrojs/starlight/components/Footer.astro';
-
+import Default from "@astrojs/starlight/components/Footer.astro";
 ---
 
-{
-    <Default>
-      <slot />
-    </Default>
-}
-
+<Default>
+  <slot />
+</Default>
 
 <div class="custom-footer-links">
-  <a href="https://github.com/edkadigital/docs/issues/new">
-    Report an issue
-  </a>
+  <a href="https://github.com/edkadigital/docs/issues/new"> Report an issue </a>
   <span class="separator">or</span>
   <a href="https://github.com/edkadigital/docs/edit/main">
     Edit this page on GitHub
@@ -21,22 +15,34 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Update the "Edit this page on GitHub" link
-    const editLink = document.querySelector('.custom-footer-links a:last-child');
+    const editLink = document.querySelector(
+      ".custom-footer-links a:last-child",
+    );
     if (editLink) {
-      const path = window.location.pathname === '/' 
-        ? '/index.md' 
-        : window.location.pathname.replace(/\/$/, '') + '.md';
-      editLink.setAttribute('href', `https://github.com/edkadigital/docs/edit/main${path}`);
+      const path =
+        window.location.pathname === "/"
+          ? "/index.md"
+          : window.location.pathname.replace(/\/$/, "") + ".md";
+      editLink.setAttribute(
+        "href",
+        `https://github.com/edkadigital/docs/edit/main${path}`,
+      );
     }
 
     // Insert the custom footer links after each footer element
-    const customLinks = document.querySelector('.custom-footer-links');
+    const customLinks = document.querySelector(".custom-footer-links");
     if (customLinks) {
-      const footer = document.querySelector('footer');
-      if (footer && !footer.nextElementSibling?.classList.contains('custom-footer-links')) {
-        footer.parentNode?.insertBefore(customLinks.cloneNode(true), footer.nextSibling);
+      const footer = document.querySelector("footer");
+      if (
+        footer &&
+        !footer.nextElementSibling?.classList.contains("custom-footer-links")
+      ) {
+        footer.parentNode?.insertBefore(
+          customLinks.cloneNode(true),
+          footer.nextSibling,
+        );
       }
     }
   });
@@ -53,25 +59,25 @@ import Default from '@astrojs/starlight/components/Footer.astro';
     padding-top: 1rem;
     border-top: 1px solid var(--sl-color-gray-5);
   }
-  
+
   .separator {
     color: var(--sl-color-gray-3);
   }
-  
+
   .custom-footer-links a {
     color: var(--sl-color-text-accent);
     text-decoration: none;
   }
-  
+
   .custom-footer-links a:hover {
     text-decoration: underline;
   }
-  
+
   /* Insert after the footer */
   :global(footer) {
     position: relative;
   }
-  
+
   :global(footer + .custom-footer-links) {
     margin-top: 0;
   }
@@ -79,13 +85,20 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 
 <script>
   // Insert the custom footer links after each footer element
-  document.addEventListener('DOMContentLoaded', () => {
-    const customLinks = document.querySelector('.custom-footer-links');
+  document.addEventListener("DOMContentLoaded", () => {
+    const customLinks = document.querySelector(".custom-footer-links");
     if (customLinks) {
-      const footer = document.querySelector('footer');
-      if (footer && !footer.nextElementSibling?.classList.contains('custom-footer-links')) {
-        footer.parentNode?.insertBefore(customLinks.cloneNode(true), footer.nextSibling);
+      const footer = document.querySelector("footer");
+      if (
+        footer &&
+        !footer.nextElementSibling?.classList.contains("custom-footer-links")
+      ) {
+        footer.parentNode?.insertBefore(
+          customLinks.cloneNode(true),
+          footer.nextSibling,
+        );
       }
     }
   });
-</script> 
+</script>
+

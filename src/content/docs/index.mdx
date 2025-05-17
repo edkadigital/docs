@@ -3,17 +3,17 @@ title: Edka developer documentation (Beta)
 description: Deploy anything with Edka - The self-hosted PaaS you can outgrow by design.
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-import { Steps } from '@astrojs/starlight/components';
-import { LinkButton } from '@astrojs/starlight/components';
-import { Icon } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Steps } from "@astrojs/starlight/components";
+import { LinkButton } from "@astrojs/starlight/components";
+import { Icon } from "@astrojs/starlight/components";
 
 ## About Edka
 
-Edka automates the creation of a production‑ready Platform as a Service (PaaS) on top of standard cloud virtual machines and Kubernetes. 
+Edka automates the creation of a production‑ready Platform as a Service (PaaS) on top of standard cloud virtual machines and Kubernetes.
 It reduces the manual effort required to run applications on Kubernetes by providing preconfigured opensource add-ons that turn a Kubernetes cluster into a full-fledged PaaS.
 
-Edka helps provisioning and managing Kubernetes clusters on your own Hetzner Cloud account. If you disconnect Edka, you can continue to manage your cluster manually or with other tools, like `kubectl`. 
+Edka helps provisioning and managing Kubernetes clusters on your own Hetzner Cloud account. If you disconnect Edka, you can continue to manage your cluster manually or with other tools, like `kubectl`.
 
 ## How It Works
 
@@ -21,23 +21,40 @@ Edka helps provisioning and managing Kubernetes clusters on your own Hetzner Clo
   <ol>
     <li>
       <strong>Cluster Bootstrap</strong>
-      <p>Creates a Kubernetes cluster on Hetzner Cloud (additional providers are planned). Configures control‑plane through a simple UI.</p>
+      <p>
+        Creates a Kubernetes cluster on Hetzner Cloud (additional providers are
+        planned). Configures control‑plane through a simple UI.
+      </p>
     </li>
     <li>
       <strong>Add‑ons Installation</strong>
-      <p>Installs a curated set of production add‑ons: ingress and certificate management, logging, metrics, tracing, autoscaling and database operators.</p>
+      <p>
+        Installs a curated set of production add‑ons: ingress and certificate
+        management, logging, metrics, tracing, autoscaling and database
+        operators.
+      </p>
     </li>
-	<li>
-	  <strong>Connect a Container Registry</strong>
-	  <p>Connect a container registry to enable automatic image pull/push for your workloads.</p>
-	</li>
-	<li>
-	  <strong>Sync Your Secrets</strong>
-	  <p>Edka supports external secret management tools like 1Password, Doppler, HashiCorp Vault, AWS Secrets Manager, and more. Secrets are synced directly to your clusters.</p>
-	</li>
+    <li>
+      <strong>Connect a Container Registry</strong>
+      <p>
+        Connect a container registry to enable automatic image pull/push for
+        your workloads.
+      </p>
+    </li>
+    <li>
+      <strong>Sync Your Secrets</strong>
+      <p>
+        Edka supports external secret management tools like 1Password, Doppler,
+        HashiCorp Vault, AWS Secrets Manager, and more. Secrets are synced
+        directly to your clusters.
+      </p>
+    </li>
     <li>
       <strong>GitOps</strong>
-      <p>Connect a Git repository to enable continuous reconciliation (GitOps). Manifests pushed to the repository are applied automatically.</p>
+      <p>
+        Connect a Git repository to enable continuous reconciliation (GitOps).
+        Manifests pushed to the repository are applied automatically.
+      </p>
     </li>
   </ol>
 </Steps>
@@ -52,4 +69,3 @@ Edka helps provisioning and managing Kubernetes clusters on your own Hetzner Clo
     Visit Website
   </LinkButton>
 </div>
-

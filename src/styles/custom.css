@@ -4,17 +4,17 @@
   --sl-color-accent-low: #e6f0ff;
   --sl-color-accent: #008236;
   --sl-color-accent-high: #008236;
-  --sl-color-button-primary:  rgba(14, 165, 127, 0.4);
+  --sl-color-button-primary: rgba(14, 165, 127, 0.4);
   --sl-color-button-primary-high: rgba(14, 165, 127, 0.5);
-  
+
   /* Text colors */
   --sl-color-text-accent: #008236;
   --sl-color-text-accent-high: #008236;
   --sl-color-text-link: #008236;
   --sl-color-text-link-active: #008236;
-  
+
   /* Custom font stack that's similar to Edka's website */
-  --sl-font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --sl-font: "Inter", "Segoe UI", system-ui, sans-serif;
 
   /* Edka Icon Colors */
   --edka-icon-blue-bg: #e6f0ff;
@@ -32,13 +32,13 @@
 }
 
 /* Dark mode overrides */
-:root[data-theme='dark'] {
-  --sl-color-button-primary:  rgba(5, 223, 114, 0.1);
+:root[data-theme="dark"] {
+  --sl-color-button-primary: rgba(5, 223, 114, 0.1);
   --sl-color-button-primary-high: rgba(5, 223, 114, 0.2);
   --sl-color-accent-low: #203354;
   --sl-color-accent: #008236;
   --sl-color-accent-high: #09795d;
-  
+
   --sl-color-text-accent: #008236;
   --sl-color-text-link: #008236;
   --sl-color-text-link-active: #09795d;
@@ -55,7 +55,9 @@
 .card {
   border-radius: 0.5rem;
   border: 1px solid var(--sl-color-gray-5);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 
 .card:hover {
@@ -121,7 +123,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-
 /* Center the header on homepage */
 :where(.content) > h1:first-child {
   text-align: center;
@@ -152,12 +153,14 @@
   padding: 1.5rem;
   margin: 0;
   border-radius: 0.75rem;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
   border: 1px solid var(--sl-color-gray-4);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-:root[data-theme='dark'] .feature-item {
+:root[data-theme="dark"] .feature-item {
   background-color: var(--sl-color-black-5);
   border-color: var(--sl-color-gray-6);
 }
@@ -222,7 +225,7 @@
   font-weight: 600;
 }
 
-:root[data-theme='dark'] .feature-item h3 {
+:root[data-theme="dark"] .feature-item h3 {
   color: var(--sl-color-white);
 }
 
@@ -242,7 +245,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-:root[data-theme='dark'] .tab-content {
+:root[data-theme="dark"] .tab-content {
   background-color: var(--sl-color-black-5);
   border-color: var(--sl-color-gray-6);
 }
@@ -288,7 +291,10 @@
 }
 
 .sl-steps ol::before {
-  background: linear-gradient(var(--sl-color-accent-low), var(--sl-color-accent-high));
+  background: linear-gradient(
+    var(--sl-color-accent-low),
+    var(--sl-color-accent-high)
+  );
   width: 3px;
 }
 
@@ -343,4 +349,4 @@ a[data-sl-variant="minimal"]:hover {
   background-color: transparent;
   text-decoration: underline;
   color: var(--sl-color-accent-high);
-} 
+}

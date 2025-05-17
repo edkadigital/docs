@@ -2,6 +2,7 @@
 title: Deploy A Sample Application
 description: Deploy the "StartMeUp" sample application to your Edka cluster.
 ---
+
 This guide walks you through deploying the [StartMeUp](https://github.com/edkadigital/startmeup) sample application to your Edka cluster. "StartMeUp" is a Go-based SaaS starter kit, packaged as a Helm chart. It serves as a foundational example that you can adapt and extend for your specific requirements.
 
 **Important**
@@ -10,10 +11,10 @@ To get it working, you have to fork the [StartMeUp](https://github.com/edkadigit
 
 ## Prerequisites
 
-*   You have completed the steps in [Build Your Own PaaS](/get-started/build-your-own-paas/), which sets up your Edka cluster, PostgreSQL, GitHub integration, Container Registry and Doppler integration.
-*   You have your GitOps repository (e.g., [edkadigital/blueprint](https://github.com/edkadigital/blueprint)) cloned locally.
-*   [StartMeUp](https://github.com/edkadigital/startmeup) is forked to your own GitHub account and configured to push the image and helm chart to your own GitHub Container Registry
-*   You have access to a Doppler project where you can manage secrets for the application.
+- You have completed the steps in [Build Your Own PaaS](/get-started/build-your-own-paas/), which sets up your Edka cluster, PostgreSQL, GitHub integration, Container Registry and Doppler integration.
+- You have your GitOps repository (e.g., [edkadigital/blueprint](https://github.com/edkadigital/blueprint)) cloned locally.
+- [StartMeUp](https://github.com/edkadigital/startmeup) is forked to your own GitHub account and configured to push the image and helm chart to your own GitHub Container Registry
+- You have access to a Doppler project where you can manage secrets for the application.
 
 ## 1. Prepare Application Secrets in Doppler
 
@@ -24,26 +25,29 @@ The "StartMeUp" application requires two secrets to function correctly:
 
 Create these secrets in your Doppler project associated with this application:
 
-*   **`DATABASE_URL`**:
-    ```
-    postgresql://clusterone:<YOUR_POSTGRES_PASSWORD>@clusterone-rw.postgres.svc.cluster.local:5432/clusterone?sslmode=disable
-    ```
-    Replace `<YOUR_POSTGRES_PASSWORD>` with the actual `POSTGRES_USER_PASSWORD` you configured during the [Cloud-Native PostgreSQL setup](/get-started/build-your-own-paas/#cloud-native-postgres).
+- **`DATABASE_URL`**:
 
-*   **`ENCRYPTION_KEY`**:
-    Generate a secure, long random string. For example, using OpenSSL:
-    ```bash
-    openssl rand -hex 32
-    ```
-    An example key: `a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6`
+  ```
+  postgresql://clusterone:<YOUR_POSTGRES_PASSWORD>@clusterone-rw.postgres.svc.cluster.local:5432/clusterone?sslmode=disable
+  ```
+
+  Replace `<YOUR_POSTGRES_PASSWORD>` with the actual `POSTGRES_USER_PASSWORD` you configured during the [Cloud-Native PostgreSQL setup](/get-started/build-your-own-paas/#cloud-native-postgres).
+
+- **`ENCRYPTION_KEY`**:
+  Generate a secure, long random string. For example, using OpenSSL:
+  ```bash
+  openssl rand -hex 32
+  ```
+  An example key: `a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6`
 
 ![Doppler project showing DATABASE_URL and ENCRYPTION_KEY secrets](https://assets.edka.io/ek_doppler_app.webp)
 
 ## 2. Configure GitOps for the Application
 
 We will add two FluxCD custom resources to your GitOps repository:
-*   A `HelmRelease` to deploy the application using its private Helm chart.
-*   A `Kustomization` to manage the `HelmRelease` dependency on other resources, like the External Secrets Operator and PostgreSQL, ensuring they are ready before the application attempts to deploy.
+
+- A `HelmRelease` to deploy the application using its private Helm chart.
+- A `Kustomization` to manage the `HelmRelease` dependency on other resources, like the External Secrets Operator and PostgreSQL, ensuring they are ready before the application attempts to deploy.
 
 ### a. Create Application Manifest Directory
 
@@ -64,25 +68,26 @@ Create a file named `startmeup-helmrelease.yaml` in the `clusters/resources/clus
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: startmeup          # Name of the HelmRelease object
-  namespace: production    # Namespace where the application will be deployed
+  name: startmeup # Name of the HelmRelease object
+  namespace: production # Namespace where the application will be deployed
 spec:
-  interval: 5m             # Reconciliation interval for the HelmRelease
+  interval: 5m # Reconciliation interval for the HelmRelease
   chart:
     spec:
-      chart: startmeup     # Name of the Helm chart
-      version: ">=0.0.1"   # Use the latest available version (or pin to a specific one)
+      chart: startmeup # Name of the Helm chart
+      version: ">=0.0.1" # Use the latest available version (or pin to a specific one)
       sourceRef:
         kind: HelmRepository
-        name: edka         # Assumes a HelmRepository named 'edka' exists
-        namespace: flux-system      # Namespace where the HelmRepository is located
-      interval: 1m                  # How often to check for new chart versions
+        name: edka # Assumes a HelmRepository named 'edka' exists
+        namespace: flux-system # Namespace where the HelmRepository is located
+      interval: 1m # How often to check for new chart versions
   upgrade:
     remediation:
-      remediateLastFailure: true    # Attempt to fix failed upgrades
+      remediateLastFailure: true # Attempt to fix failed upgrades
   test:
-    enable: true                    # Run Helm tests after deployment/upgrade
+    enable: true # Run Helm tests after deployment/upgrade
 ```
+
 ### c. Define the Kustomization for the Application
 
 This `Kustomization` resource tells Flux to manage the `HelmRelease` within the `clusters/resources/clusterone/app/` directory and respect its dependecies.
@@ -94,8 +99,8 @@ Create a file named `startmeup-kustomization.yaml` in the `clusters/clusterone/`
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: startmeup      # Unique name for this Kustomization object
-  namespace: flux-system  # Namespace where this Kustomization object itself resides
+  name: startmeup # Unique name for this Kustomization object
+  namespace: flux-system # Namespace where this Kustomization object itself resides
 spec:
   dependsOn:
     # Ensures that the External Secrets Operator and its Doppler integration are ready
@@ -105,7 +110,7 @@ spec:
   interval: 5m # How often Flux reconciles this Kustomization
   retryInterval: 2m
   timeout: 5m # Max time to wait for all resources to become ready
-  wait: true  # Wait for all resources defined in the path to be ready
+  wait: true # Wait for all resources defined in the path to be ready
   path: "./clusters/resources/clusterone/app" # Path to the application's manifests
   prune: true # Delete resources removed from the Git repository path
   sourceRef:
@@ -156,6 +161,6 @@ NAME               CLASS   HOSTS              ADDRESS                           
 go.startmeup.dev   nginx   go.startmeup.dev   7d4bd02c-7f89-4898-a8da-8f6e69fc525d.fsn1.customers.edka.net   80, 443   4m13s
 ```
 
-You can now access the application at the domain you configured in the Ingress resource. 
+You can now access the application at the domain you configured in the Ingress resource.
 
 ![StartMeUp](https://assets.edka.io/ek_startmeup.webp)

@@ -2,6 +2,7 @@
 title: Create Your First Cluster
 description: Create your first Edka cluster in 2 minutes
 ---
+
 This guide will help you set up your first Edka cluster.
 
 ## Prerequisites
@@ -13,7 +14,7 @@ This guide will help you set up your first Edka cluster.
 
 If you don't have these yet, see our [Prerequisites](/get-started/prerequisites/) page for detailed instructions.
 
-**Note:** *Kubernetes knowledge is not required to use Edka, but it can be helpful for advanced operations.*
+**Note:** _Kubernetes knowledge is not required to use Edka, but it can be helpful for advanced operations._
 
 ## Step 1: Create an Edka Account
 
@@ -40,13 +41,14 @@ You also have the option to use a temporary Hetzner token (not stored) during cl
 ![Provision Cluster](https://assets.edka.io/ek_create_cluster.webp)
 
 Optional settings:
-   - Cluster location (e.g. Nuremberg)
-   - Kubernetes version (e.g., *1.32.1-k3s1*)
-   - Instance type for control plane and node pools (e.g., CX21)
-   - Set a highly available control plane (recommended for production)
-   - Customize the network settings in the *Network* tab
-   - Choose the number of instances and node pools in the *Node Pools* tab
-   - Use temporary Hetzner token (not stored) or store the token for future operations
+
+- Cluster location (e.g. Nuremberg)
+- Kubernetes version (e.g., _1.32.1-k3s1_)
+- Instance type for control plane and node pools (e.g., CX21)
+- Set a highly available control plane (recommended for production)
+- Customize the network settings in the _Network_ tab
+- Choose the number of instances and node pools in the _Node Pools_ tab
+- Use temporary Hetzner token (not stored) or store the token for future operations
 
 Edka will provision your Kubernetes cluster in about 2 minutes. You'll see progress as the process completes.
 
@@ -56,7 +58,6 @@ Edka will provision your Kubernetes cluster in about 2 minutes. You'll see progr
 
 1. In the **Clusters** dashboard, click on your cluster name
 2. Click **Download Kubeconfig** tab
-
 
 Set the `KUBECONFIG` environment variable to point to the downloaded file:
 
@@ -84,5 +85,6 @@ Alternatively, you can use [Lens](https://k8slens.dev/) to manage your cluster v
 ## Next Steps
 
 Now that you have your first cluster running, let's set up some add-ons to transform it into a full-fledged PaaS:
+
 - [Build Your Own PaaS](/get-started/build-your-own-paas/)
 - [Deploy A Sample Application](/get-started/deploy-a-sample-application/)

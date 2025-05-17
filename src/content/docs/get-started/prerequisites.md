@@ -75,4 +75,4 @@ If you want to expose your applications to the internet with custom domains:
 
 ## Next Steps
 
-Once you have all the prerequisites in place, you're ready to [create your first cluster](/get-started/create-a-cluster/)! 
+Once you have all the prerequisites in place, you're ready to [create your first cluster](/get-started/create-a-cluster/)!
