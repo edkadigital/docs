@@ -2,10 +2,11 @@
 title: Deploy A Sample Application
 description: Deploy the "StartMeUp" sample application to your Edka cluster.
 ---
-This guide walks you through deploying the [StartMeUp](https://github.com/edkadigital/startmeup) sample application to your Edka cluster. "StartMeUp" is a Go-based SaaS starter kit, packaged as a Helm chart. It is part of a more complex example and you can customize it according to your needs.
+This guide walks you through deploying the [StartMeUp](https://github.com/edkadigital/startmeup) sample application to your Edka cluster. "StartMeUp" is a Go-based SaaS starter kit, packaged as a Helm chart. It serves as a foundational example that you can adapt and extend for your specific requirements.
 
 **Important**
-To get it working, you have to fork the [StartMeUp](https://github.com/edkadigital/startmeup) repo and make the necessary changes to push the image and helm chart to your own GitHub Container Registry.
+
+To get it working, you have to fork the [StartMeUp](https://github.com/edkadigital/startmeup) repo and make the necessary changes (e.g., update with your container registry and ingress endpoint) to push the image and helm chart to your own GitHub Container Registry.
 
 ## Prerequisites
 
@@ -42,7 +43,7 @@ Create these secrets in your Doppler project associated with this application:
 
 We will add two FluxCD custom resources to your GitOps repository:
 *   A `HelmRelease` to deploy the application using its private Helm chart.
-*   A `Kustomization` to manage the `HelmRelease` dependency on other resources, like 
+*   A `Kustomization` to manage the `HelmRelease` dependency on other resources, like the External Secrets Operator and PostgreSQL, ensuring they are ready before the application attempts to deploy.
 
 ### a. Create Application Manifest Directory
 
@@ -82,7 +83,7 @@ spec:
   test:
     enable: true                    # Run Helm tests after deployment/upgrade
 ```
-### d. Define the Kustomization for the Application
+### c. Define the Kustomization for the Application
 
 This `Kustomization` resource tells Flux to manage the `HelmRelease` within the `clusters/resources/clusterone/app/` directory and respect its dependecies.
 
