@@ -87,4 +87,4 @@ Alternatively, you can use [Lens](https://k8slens.dev/) to manage your cluster v
 Now that you have your first cluster running, let's set up some add-ons to transform it into a full-fledged PaaS:
 
 - [Build Your Own PaaS](/get-started/build-your-own-paas/)
-- [Deploy A Sample Application](/get-started/deploy-a-sample-application/)
+- [Deploy A Sample Application](/get-started/deploy-a-sample-app/)
