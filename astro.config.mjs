@@ -36,6 +36,17 @@ export default defineConfig({
       editLink: {
         baseUrl: "https://github.com/edkadigital/docs/edit/main/",
       },
+      head: [
+        // Analytics
+        {
+          tag: "script",
+          attrs: {
+            defer: true,
+            src: "https://atlas.edka.io/script.js",
+            "data-website-id": "b308684d-ad79-4d12-88c4-436dfa8426a6",
+          },
+        },
+      ],
       lastUpdated: true,
       credits: false,
       sidebar: [
